@@ -1,0 +1,58 @@
+builds:
+  - id: saectl
+    binary: saectl
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    main: ./cmd/saectl/main.go
+    ldflags:
+      - -s -w -X saectl/version.SaeCtlVersion={{ .Tag }} -X saectl/version.GitRevision=git-{{.ShortCommit}}
+
+  - id: kubectl-sae
+    binary: kubectl-sae
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    main: ./cmd/saectl/main.go
+    ldflags:
+      - -s -w -X saectl/version.SaeCtlVersion={{ .Version }} -X saectl/version.GitRevision=git-{{.ShortCommit}}
+
+archives:
+  - format: tar.gz
+    id: saectl-tgz
+    wrap_in_directory: "{{ .Os }}-{{ .Arch }}"
+    builds:
+      - saectl
+    name_template: '{{ trimsuffix .ArtifactName ".exe" }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
+    files: [LICENSE, README.md]
+    rlcp: true
+
+  - format: tar.gz
+    id: plugin-tgz
+    builds:
+      - kubectl-sae
+    wrap_in_directory: "{{ .Os }}-{{ .Arch }}"
+    name_template: '{{ trimsuffix .ArtifactName ".exe" }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
+    files: [LICENSE, README.md]
+    rlcp: true
+
+checksum:
+  name_template: "sha256sums.txt"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
