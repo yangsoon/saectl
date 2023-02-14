@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 	"os"
+	"saectl/internal/cmd/version"
 
 	"github.com/spf13/cobra"
 	"k8s.io/cli-runtime/pkg/genericclioptions"
@@ -136,7 +137,6 @@ func NewCommand(o CtlOption) *cobra.Command {
 			Commands: []*cobra.Command{
 				diff.NewCmdDiff(f, o.IOStreams),
 				apply.NewCmdApply("saectl", f, o.IOStreams),
-				//patch.NewCmdPatch(f, o.IOStreams),
 				replace.NewCmdReplace(f, o.IOStreams),
 			},
 		},
@@ -145,6 +145,12 @@ func NewCommand(o CtlOption) *cobra.Command {
 			Commands: []*cobra.Command{
 				label.NewCmdLabel(f, o.IOStreams),
 				annotate.NewCmdAnnotate("saectl", f, o.IOStreams),
+			},
+		},
+		{
+			Message: "System Commands:",
+			Commands: []*cobra.Command{
+				version.NewVersionCommand(),
 			},
 		},
 	}
