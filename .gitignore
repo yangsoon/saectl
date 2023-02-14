@@ -1,0 +1,6 @@
+node_modules/
+gomod/bin/
+gomod/dist/
+.idea/
+.vscode/
+gomod/.idea/
