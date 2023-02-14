@@ -1,4 +1,3 @@
-[![Release](https://github.com/yangsoon/saectl/actions/workflows/release.yml/badge.svg)](https://github.com/yangsoon/saectl/actions/workflows/release.yml)
 <h1 align="center">阿里云 SAE-CTL 应用部署组件</h1>
 <p align="center" class="flex justify-center">
   <a href="https://nodejs.org/en/" class="ml-1">
