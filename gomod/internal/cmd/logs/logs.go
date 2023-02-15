@@ -16,6 +16,7 @@ limitations under the License.
 
 package logs
 
+// the code copy and paste from https://github.com/kubernetes/kubectl/blob/master/pkg/cmd/log/log.go
 import (
 	"bufio"
 	"context"

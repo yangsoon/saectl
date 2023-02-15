@@ -13,6 +13,7 @@ SAECTL_HTTP_REQUEST_CLI=curl
 
 # SAECTL filename
 SAECTL_FILENAME=saectl
+KUBECTL_SAE_FILENAME=kubectl-sae
 
 SAECTL_FILE="${SAECTL_INSTALL_DIR}/${SAECTL_FILENAME}"
 
@@ -117,6 +118,7 @@ installFile() {
 
     chmod o+x $tmp_root_saectl
     runAsRoot cp "$tmp_root_saectl" "$SAECTL_INSTALL_DIR"
+    runAsRoot cp "$tmp_root_saectl" "$SAECTL_INSTALL_DIR/$KUBECTL_SAE_FILENAME"
 
     if [ $? -eq 0 ] && [ -f "$SAECTL_FILE" ]; then
         echo -e "$SAECTL_FILENAME installed into $SAECTL_INSTALL_DIR successfully.\n"

@@ -1,5 +1,6 @@
 package apply
 
+// the code copy and paste from https://github.com/kubernetes/kubectl/blob/master/pkg/cmd/apply/prune.go
 import (
 	"context"
 	"fmt"

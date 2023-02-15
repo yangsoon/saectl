@@ -72,7 +72,7 @@ spec:
       to: "."
     bin: "kubectl-sae.exe"
   shortDescription: Easily interact with SAE
-  homepage: https://github.com/devsapp/saectl
+  homepage: https://github.com/devsapp/saectl/gomod
   description: |
     kubectl sae is a kubectl plugin from the Serverless Devs project. SAE is 
     the application-oriented serverless PaaS, providing a cost-effective and 

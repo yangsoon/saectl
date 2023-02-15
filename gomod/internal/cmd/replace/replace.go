@@ -1,5 +1,6 @@
 package replace
 
+// the code copy and paste from https://github.com/kubernetes/kubectl/blob/master/pkg/cmd/replace/replace.go
 import (
 	"fmt"
 	"io/ioutil"

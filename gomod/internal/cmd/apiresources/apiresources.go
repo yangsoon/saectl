@@ -1,5 +1,6 @@
 package apiresources
 
+// the code copy and paste from https://github.com/kubernetes/kubectl/blob/master/pkg/cmd/apiresources/apiresources.go
 import (
 	"fmt"
 	"io"

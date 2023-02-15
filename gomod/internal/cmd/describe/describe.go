@@ -1,5 +1,6 @@
 package describe
 
+// the code copy and paste from https://github.com/kubernetes/kubectl/blob/master/pkg/cmd/describe/decribe.go
 import (
 	"fmt"
 	"strings"
