@@ -71,7 +71,7 @@ jobs:
           done
         working-directory: ./gomod
   upload-plugin:
-      permissions:
+    permissions:
       contents: write
       actions: read
       checks: write

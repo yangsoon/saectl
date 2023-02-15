@@ -23,6 +23,7 @@ The release notes for the CLI can be found in the [Releases](https://github.com/
   All releases please [click here](https://github.com/devsapp/saectl/releases).
 
 - **Use install script(only support Linux/MacOs)**
+
   You can run the flowing command:
   ```
   sudo curl -s https://sae-component-software.oss-cn-hangzhou.aliyuncs.com/saectl/install.sh | bash
