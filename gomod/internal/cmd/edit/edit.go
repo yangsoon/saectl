@@ -1,5 +1,6 @@
 package edit
 
+// the code copy and paste from https://github.com/kubernetes/kubectl/blob/master/pkg/cmd/edit/edit.go
 import (
 	"github.com/spf13/cobra"
 

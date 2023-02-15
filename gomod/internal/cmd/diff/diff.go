@@ -1,5 +1,6 @@
 package diff
 
+// the code copy and paste from https://github.com/kubernetes/kubectl/blob/master/pkg/cmd/diff/diff.go
 import (
 	"fmt"
 	"io"

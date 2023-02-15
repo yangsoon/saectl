@@ -1,5 +1,6 @@
 package scale
 
+// the code copy and paste from https://github.com/kubernetes/kubectl/blob/master/pkg/cmd/scale/scale.go
 import (
 	"fmt"
 	"time"

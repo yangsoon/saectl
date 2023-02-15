@@ -1,5 +1,6 @@
 package delete
 
+// the code copy and paste from https://github.com/kubernetes/kubectl/blob/master/pkg/cmd/delete/delete.go
 import (
 	"fmt"
 	"net/url"

@@ -1,5 +1,6 @@
 package create
 
+// the code copy and paste from https://github.com/kubernetes/kubectl/blob/master/pkg/cmd/create/create.go
 import (
 	"context"
 	"fmt"

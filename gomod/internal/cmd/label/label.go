@@ -16,6 +16,7 @@ limitations under the License.
 
 package label
 
+// the code copy and paste from https://github.com/kubernetes/kubectl/blob/master/pkg/cmd/label/label.go
 import (
 	"fmt"
 	"reflect"
