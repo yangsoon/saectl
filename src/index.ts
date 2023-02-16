@@ -1,5 +1,7 @@
-import logger from './common/logger';
 import { InputProps } from './common/entity';
+import { checkAndInstallSaeCtl } from "./utils/install";
+import { SaeCtlCmd } from "./common/saectl";
+import * as core from '@serverless-devs/core';
 
 export default class SaeCtlComponent {
   /**
@@ -8,8 +10,13 @@ export default class SaeCtlComponent {
    * @returns
    */
   public async index(inputs: InputProps) {
-    logger.debug(`input: ${JSON.stringify(inputs.props)}`);
-    logger.info('command test');
-    return { hello: 'world' };
+    let target = await checkAndInstallSaeCtl();
+    const credentials = await core.getCredential(inputs.project?.access);
+    let saeCtlCmd = new SaeCtlCmd(inputs, credentials, target);
+    await saeCtlCmd.run();
+  }
+
+  public async saectl(inputs: InputProps) {
+    await this.index(inputs)
   }
 }

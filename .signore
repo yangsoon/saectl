@@ -10,3 +10,6 @@ LICENSE
 package-lock.json
 readme.md
 tsconfig.json
+gomod/
+script/
+.krew.yaml
