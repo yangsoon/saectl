@@ -5,3 +5,5 @@ access: default #  秘钥别名
 services:
   sae-test:
     component: ../
+    props:
+      region: cn-hangzhou

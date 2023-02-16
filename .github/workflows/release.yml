@@ -17,7 +17,7 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  build_saectl:
     permissions:
       contents: write
       actions: read
@@ -70,20 +70,52 @@ jobs:
             ./ossutil --config-file .ossutilconfig create-symlink oss://$BUCKET/saectl/latest/$latest_arc oss://$BUCKET/saectl/${{ env.SAE_CTL_VERSION }}/$file
           done
         working-directory: ./gomod
-  upload-plugin:
-    permissions:
-      contents: write
-      actions: read
-      checks: write
-      issues: read
-      packages: write
-      pull-requests: read
-      repository-projects: read
-      statuses: read
-    needs: build
+  # upload-kubectl_plugin:
+  #   permissions:
+  #     contents: write
+  #     actions: read
+  #     checks: write
+  #     issues: read
+  #     packages: write
+  #     pull-requests: read
+  #     repository-projects: read
+  #     statuses: read
+  #   needs: build
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
+  #     - name: Update kubectl plugin version in krew-index
+  #       uses: rajatjindal/krew-release-bot@92da038bbf995803124a8e50ebd438b2f37bbbb0
+  deploy-devsapp:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c
-      - name: Update kubectl plugin version in krew-index
-        uses: rajatjindal/krew-release-bot@92da038bbf995803124a8e50ebd438b2f37bbbb0
+      - uses: actions/checkout@v2
+        name: Checkout
+      - uses: actions/setup-node@v1
+        name: Set up Node
+        with:
+          node-version: 18
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
+      - name: Build
+        run: |
+          npm install
+          npm run build
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install setuptools wheel twine
+          pip install requests
+      - name: Add publish file
+        run: |
+          wget https://serverless-registry.oss-cn-hangzhou.aliyuncs.com/publish-file/python3/hub-publish.py
+          ls
+      - name: Publish package
+        env:
+          publish_token: ${{ secrets.alibaba_registry_publish_token }}
+        run: |
+          ls
+          python hub-publish.py
